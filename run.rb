@@ -18,11 +18,9 @@ class Runner
 	end
 
 	def take_turns(player, board, cpu)
-		loop do
+		until EndGame.new(player, cpu, board).run != false
 			PlayerMove.new(player, board).run
-			break if EndGame.new(player, cpu, board).run != false
 			ComputerMove.new(cpu, board).run
-			break if EndGame.new(player, cpu, board).run != false
 		end
 	end
 
